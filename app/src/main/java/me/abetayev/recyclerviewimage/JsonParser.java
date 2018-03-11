@@ -7,14 +7,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by mmazb3 on 10.03.2018.
+ * JSON Parser
  */
 
 class JsonParser {
-    private static final String TAG = "JsonParser";
-    ArrayList<String> imageUrls = new ArrayList<>();
+    private ArrayList<String> imageUrls = new ArrayList<>();
 
     ArrayList<String> fromJson(String data) {
+        // getting image URLs from JSON
         try {
             JSONObject jsonObject = new JSONObject(data);
             JSONArray itemsArray = jsonObject.getJSONArray("items");

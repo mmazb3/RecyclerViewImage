@@ -23,17 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private RecyclerView mRecyclerView;
-    private RVAdapter mAdapter;
 
     final String flickrUrl = "https://api.flickr.com/services/feeds/photos_public.gne?tags=brooklyn&tagmode=any&format=json&nojsoncallback=1";
-//    ArrayList<String> imageUrls = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         downloadJson(flickrUrl);
 
@@ -41,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void downloadJson(String url) {
+        // using Loopj to download JSON
+
         Log.d(TAG, "downloadJson: started " + url);
 
-        // AsyncHttpClient belongs to the loopj dependency.
         AsyncHttpClient client = new AsyncHttpClient();
-        // Making an HTTP GET request by providing a URL.
         client.get(url, new JsonHttpResponseHandler() {
 
             @Override
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void displayImages(ArrayList<String> imageUrls) {
-        mAdapter = new RVAdapter(imageUrls);
+        RVAdapter mAdapter = new RVAdapter(imageUrls);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

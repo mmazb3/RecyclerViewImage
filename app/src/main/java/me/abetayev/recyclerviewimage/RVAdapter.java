@@ -11,25 +11,23 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by mmazb3 on 10.03.2018.
+ * Recycle View Adapter
  */
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder>{
+class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder>{
 
     private ArrayList<String> imageUrls;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-//        TextView link;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             this.image = view.findViewById(R.id.image);
-//            this.link = view.findViewById(R.id.link);
         }
     }
 
-    public RVAdapter(ArrayList<String> imageUrls) {
+    RVAdapter(ArrayList<String> imageUrls) {
         this.imageUrls = imageUrls;
     }
 
@@ -44,7 +42,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder>{
     public void onBindViewHolder(MyViewHolder holder, int position) {
         String urlSmall = imageUrls.get(position);
         String urlBig = urlSmall.replaceFirst("_m.", "_b.");
-//        holder.link.setText(url);
         Picasso.get().load(urlBig).into(holder.image);
     }
 
