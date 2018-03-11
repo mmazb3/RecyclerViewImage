@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by mmazb3 on 10.03.2018.
  */
 
-class JsonDownloader {
-    private static final String TAG = "JsonDownloader";
+class JsonParser {
+    private static final String TAG = "JsonParser";
     ArrayList<String> imageUrls = new ArrayList<>();
 
     ArrayList<String> fromJson(String data) {

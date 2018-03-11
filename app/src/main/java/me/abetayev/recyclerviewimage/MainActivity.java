@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                JsonDownloader downloader = new JsonDownloader();
-                ArrayList<String> imageUrls = downloader.fromJson(response.toString());
+                JsonParser parser = new JsonParser();
+                ArrayList<String> imageUrls = parser.fromJson(response.toString());
                 displayImages(imageUrls);
 //                Log.d(TAG, "Success! JSON: " + response.toString());
 //                Log.d(TAG, "onSuccess: " + imageUrls);
